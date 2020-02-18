@@ -25,7 +25,9 @@ namespace Miniblog.Core.Services
 
         public FileBlogService(IWebHostEnvironment env, IHttpContextAccessor contextAccessor)
         {
-            _folder = Path.Combine(env.WebRootPath, POSTS);
+            var folder = Environment.GetFolderPath(System.Environment.SpecialFolder.CommonApplicationData);
+            //_folder = Path.Combine(env.WebRootPath, POSTS);
+            _folder = Path.Combine(folder, POSTS);
             _contextAccessor = contextAccessor;
 
             Initialize();
